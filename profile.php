@@ -1,19 +1,9 @@
-u<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <body>
 <title>My Profile</title>
 <head>
-	<script>
-		function team(){	
-		location.href='team.php';
-		}
-    		//document.getElementById("team").onclick = function () {
-        	//location.href = "team.php";
-    		//};
-		//document.getElementByID("history").onclick= function(){
-		//};
-	</script>
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
@@ -33,13 +23,11 @@ u<!DOCTYPE html>
 
             </div>
 			<header>
-				<h1> Welcome Admin</h1>
+				<h1> Welcome To The World Of Drupal</h1>
                         </header>       
 
       <div  class="form">
     			<form id="contactform" action="edit.php"> 
-			<a href="http://idl.com/list.php">
-                        <strong>Manager/contributor List</strong>
 			
                     </a>
 			<br><br>
@@ -49,6 +37,7 @@ u<!DOCTYPE html>
 			$user=$_SESSION['user'];
 			$query=mysqli_query($con,"SELECT * from user WHERE username='$user'");
 			while($row = mysqli_fetch_array($query)) {
+				$_SESSION['u_id']=$row['u_id'];
 				echo "<table border='1'>";
   				echo "<tr>";
 				echo"<td>User ID</td>";
@@ -67,7 +56,7 @@ u<!DOCTYPE html>
   				echo "<td>" . $row['doj'] . "</td>";
 				echo "</tr><tr>";
 				echo"<td>Phone no</td>";
-  				echo "<td>" . $row['ph'] . "</td>";
+  				echo "<td>" . $row['phone'] . "</td>";
 				echo "</tr><tr>";
 				echo"<td>Gender</td>";
   				echo "<td>" . $row['gender'] . "</td>";
@@ -83,25 +72,37 @@ u<!DOCTYPE html>
   				echo "</tr>";
 				}
 			echo "</table>";
-			$_SESSION['u_id']=$row['u_id'];
+			//$_SESSION['u_id']=$row['u_id'];
+			//$u=$_SESSION['u_id'];
+			//echo $row['name'];
+			//echo (int);
+			//echo $_SESSION['u_id'];
+			//echo "gourab";
 			$sql=mysqli_query($con,"SELECT r_id from roleuser WHERE u_id IN (SELECT u_id from user WHERE username='$user')");
 			$row=mysqli_fetch_array($sql);
+			//$u=$row['r_id'];
+			//echo $u;
 			if($row['r_id']==1)
 			{
-				//echo "Success";
+				
 				echo "<br><br><br>";
-				//echo"<input type='submit' name='check status'>";
-				echo "<input class='buttom' name='submit' id='submit' value='Check status' type='submit'>";
+				echo"<a href='http://idl.com/list.php'>
+                        	<strong>Approve user</strong>";
+				
 			}
 			if($row['r_id']==2)
 			{
 				echo "<br><br><br>";
-				echo '<input type="button" class="buttom" name="team" id="team" value="Team Management" onclick="team();"></input>';
+				echo"<a href='http://idl.com/team.php'>
+                        		<strong>Team Management</strong>";
+				
 			}
 			if($row['r_id']==3)
                         {
                                 echo "<br><br><br>";
-                                echo "<input class='buttom' name='history' value='Your history' id='history'>";
+                                 echo"<a href='http://idl.com/history.php'>
+                        	<strong>USER HISTORY</strong>";
+				//echo "<input class='buttom' name='history' value='Your history' id='history'>";
                         }
 
 			mysqli_close($con);

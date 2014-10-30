@@ -26,6 +26,13 @@
 
       <div  class="form">
     			<form id="contactform" action="update.php" method="post"> 
+			<!--p class="contact"><label for="role">Role</label></p>
+			<select class="select-style" name="role">
+			<option value="default">-----</option>
+                        <option value="2"> Manager </option>
+                        <option value="3"> Contributor </option>
+			</select--!>
+			
     			<p class="contact"><label for="name">Change your Name</label></p> 
     			<input id="name" name="name" placeholder="First and last name" type="text"> 	 
     			<p class="contact"><label for="email">Change your Email</label></p> 
@@ -44,7 +51,7 @@
 			<option value="mumbai"> Mumbai </option>
 			<option value="delhi"> Delhi </option>
 			<option value="chennai">Chennai </option>
-			</select>
+			</select>;
                
 		<!--p class="contact"><label for="dob"> Date Of Birth</label></p>
                 <input type="date" name="dob"id="dob"><br>  

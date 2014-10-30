@@ -17,7 +17,7 @@ if (mysqli_query($conn, $sql)) {
   header('Location:adreg.php');
 }
 $conn = mysqli_connect("idl.com", $_POST['dbname1'], $_POST['password'], $name); 
-$sql5 = "CREATE TABLE user (u_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,name VARCHAR(60),username VARCHAR(30),dob VARCHAR(12),doj VARCHAR(12),phone INT(13),gender VARCHAR(5),city VARCHAR(30),password VARCHAR(40),drupal VARCHAR(60),email VARCHAR(60),status INT(2) default '0')";
+$sql5 = "CREATE TABLE user (u_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,name VARCHAR(60),username VARCHAR(30),dob VARCHAR(12),doj VARCHAR(12),phone BIGINT,gender VARCHAR(5),city VARCHAR(30),password VARCHAR(40),drupal VARCHAR(60),email VARCHAR(60),status INT(2) default '0')";
 mysqli_query($conn,$sql5);
 $sql1 = "CREATE TABLE team (team_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,teamname VARCHAR(30),u_id INT)";
 mysqli_query($conn,$sql1);

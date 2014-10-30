@@ -13,6 +13,7 @@
         {
                 $id=$_POST['name'];
                 mysqli_query($con,"DELETE from user, roleuser USING user INNER JOIN roleuser WHERE user.u_id=$id AND user.u_id=roleuser.u_id");
+		mysqli_query($con,"DELETE from contributor WHERE u_id=$id");
                 header('location:list.php');
         }
 

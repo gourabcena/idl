@@ -41,8 +41,8 @@
 	   				<input class='buttom' name='clear' id='clear' value='Clear' type='reset'>";
 				}
 				else {
-					 echo"<p class='contact'><label for='name1'>My Availabe Team Information</label></p>";
-				 	while($row = mysqli_fetch_array($rs)) {
+					echo"<p class='contact'><label for='name1'>My Availabe Team Information</label></p>";
+					while($row = mysqli_fetch_array($rs)) {
                                 	$_SESSION['t_id']=$row['team_id'];
                                 	echo "<table border='1'>";
                                 	echo "<tr>";
@@ -57,8 +57,34 @@
                                 	echo"</tr>";
 				}
 				echo"</table>";
+				$t_id=$_SESSION['t_id'];
 				echo"<br><br><br>";
-                                echo"<input class='buttom' name='add' id='add' value='Add contributor' type='submit'>";
+				 echo"<p class='contact'><label for='name2'>Team Members' Performence</label></p>";
+				$sql=mysqli_query($con,"select contributor.u_id,user.username,contributor.commit,contributor.edit,contributor.review from contributor INNER JOIN user on contributor.u_id=user.u_id where contributor.team_id=$t_id");
+				 echo "<table border='1'>
+        			<tr>
+        			<td>UserId</td>
+        			<td>User Name</td>
+        			<td>Commit</td>
+        			<td>Edit</td>
+				<td>Review</td>
+        			</tr>";
+				while($row = mysqli_fetch_array($sql)) {
+                			echo "<tr>";
+                			echo "<td>". $row['u_id']."</td>";
+					//echo "<tr>";
+                                        echo "<td>". $row['username']."</td>";
+					//echo "<tr>";
+                                        echo "<td>". $row['commit']."</td>";
+					//echo "<tr>";
+                                        echo "<td>". $row['edit']."</td>";
+					//echo "<tr>";
+                                        echo "<td>". $row['review']."</td>";
+					echo"<tr>";
+				}
+				echo"</table>";
+				echo"<br><br><br>";
+                                echo"<input class='buttom' name='add' id='add' value='Add or Remove contributor' type='submit'>";
 
 			}
 		?>

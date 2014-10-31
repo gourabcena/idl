@@ -11,18 +11,25 @@
 <body>
 <div class="container">
             <div class="idl-top">
-                <a href="http://idl.com" target="_blank">Home</a>
-                <span class="right">
+                <a href="http://idl.com"><strong>Home</strong></a>
+                <!--span class="right">
                     <a href="http://idl.com">
                         <strong>Back to the Login page</strong>
                     </a>
-                </span>
+                </span--!>
                 <div class="clr"></div>
 
             </div>
                         <header>
                                 <h1> SIGN IN</h1>
                         </header>
+		<center><?php
+			session_start();
+			if(isset($_SESSION['message'])){
+				echo $_SESSION['message'];
+				unset ($_SESSION['message']);
+			} 
+		?></center>
 	   <div class ="form">
 			<form id="contactform" action="check.php" method="GET">
 			<p class="contact"><label for="username">UserName</label></p>

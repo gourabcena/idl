@@ -15,8 +15,8 @@
             <div class="idl-top">
                 <a href="http://idl.com" target="_blank">Home</a>
                 <span class="right">
-                    <a href="http://idl.com">
-                        <strong>Back to the Login page</strong>
+                    <a href="http://idl.com/logout.php">
+                        <strong>Log Out</strong>
                     </a>
                 </span>
                 <div class="clr"></div>
@@ -34,6 +34,7 @@
 			<?php
 			include "db.php";
 			session_start();
+			if(isset($_SESSION['user'])){
 			$user=$_SESSION['user'];
 			$query=mysqli_query($con,"SELECT * from user WHERE username='$user'");
 			while($row = mysqli_fetch_array($query)) {
@@ -105,11 +106,17 @@
 				//echo "<input class='buttom' name='history' value='Your history' id='history'>";
                         }
 
-			mysqli_close($con);
-			?>
-			<br><br>
+			//mysqli_close($con);
+			
+			echo"<br><br>";
 						
-	    		<input class="buttom" name="edit" id="edit" value="Edit Profile" type="submit"> 	 
+	    		echo"<input class='buttom' name='edit' id='edit' value='Edit Profile' type='submit'>"; 
+			}
+			else{
+				$_SESSION['message']="Please Log in to continue";
+				header('location:login.php');
+			}
+			?>	 
    </form> 
 </div>      
 </div>

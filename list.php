@@ -13,11 +13,17 @@
 <div class="container">
             <div class="idl-top">
                 <a href="http://idl.com" target="_blank">Home</a>
-                <span class="right">
+                <span>
                     <a href="http://idl.com/profile.php">
                         <strong>My Profile</strong>
                     </a>
                 </span>
+		<span class="right">
+			 <a href="http://idl.com/logout.php">
+                        <strong>Logout</strong>
+                    </a>
+                </span>
+
                 <div class="clr"></div>
 
             </div>
@@ -32,6 +38,8 @@
     			<input id="name" name="name" placeholder="U_ID" required="" type="text"> 
 <?php
 	include "db.php";
+	session_start();
+	if(isset($_SESSION['user'])){
 	//$sql="SELECT * from user WHERE u_id IN(SELECT u_id from roleuser WHERE r_id!=1 and status IS NULL)";
 	$result=mysqli_query($con,"SELECT user.u_id,roleuser.r_id, user.username,user.status from roleuser INNER JOIN user ON roleuser.u_id=user.u_id WHERE roleuser.r_id!=1");
 	echo "<table border='1'>
@@ -65,7 +73,10 @@
 
 echo "</table>";
 echo"<br><br><br><br>";
-
+}
+else{
+	header('location:login.php');
+	break;}
 	//$sql1="UPDATE roleuser SET status=1 WHERE status IS NULL";
 	//mysqli_query($con,$sql1);
 	

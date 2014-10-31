@@ -11,10 +11,14 @@
 <body>
 <div class="container">
             <div class="idl-top">
-                <a href="http://idl.com" target="_blank">Home</a>
+                <a href="http://idl.com"><strong>Home</strong></a>
+		<span>
+			<a href="http://idl.com/profile.php">
+				<strong>My Profile</strong>
+			</a></span>
                 <span class="right">
-                    <a href="http://idl.com">
-                        <strong>Back to the Login page</strong>
+                    <a href="http://idl.com/logout.php">
+                        <strong>Logout</strong>
                     </a>
                 </span>
                 <div class="clr"></div>
@@ -22,7 +26,15 @@
             </div>
 			<header>
 				<h1>Edit</h1>
-                        </header>       
+                        </header>  
+		<?php
+			session_start();
+			if(!isset($_SESSION['user'])){
+			
+				header('location:login.php');
+				break;
+			}
+		?>     
 
       <div  class="form">
     			<form id="contactform" action="update.php" method="post"> 

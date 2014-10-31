@@ -14,6 +14,8 @@
 	//$count=mysqli_num_rows($result);
 	if(mysqli_num_rows($result)==0)
 	{
+		$_SESSION['message']="Wrong username/password";
+		//echo $_SESSION['message'];
 		header('location:login.php');
 		
 	}

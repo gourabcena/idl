@@ -9,7 +9,9 @@
 	/*$_SESSION['error']="Username already exists";*/
 	//$con=mysqli_connect("idl.com",$dbname1,$pass,$dbname);
 	include "db.php";
-	$role = mysqli_real_escape_string($con, $_POST['role']);
+	session_start();
+	//$role = mysqli_real_escape_string($con, $_POST['role']);
+	$role=1;
 	$name = mysqli_real_escape_string($con, $_POST['name']);
 	$email = mysqli_real_escape_string($con, $_POST['email']);
 	$username = mysqli_real_escape_string($con, $_POST['username']);
@@ -33,12 +35,12 @@
 			$us=$row['u_id'];
 			$sql1="INSERT INTO roleuser(u_id,r_id) VALUES('$us','$role')";
 			mysqli_query($con,$sql1);
-			
-			header('location:login.php');
+			  $_SESSION['update']="Add another admin successfully";
+			header('location:profile.php');
 		}
 	}
 	else{
-		/*$_SESSION['error']="Username already exists";*/
+		$_SESSION['error']="Username already exists";
 		header('location:adreg.php');
 	}	
 	mysqli_close($con);

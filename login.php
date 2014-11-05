@@ -23,14 +23,24 @@
                         <header>
                                 <h1> SIGN IN</h1>
                         </header>
-		<center><?php
-			session_start();
-			if(isset($_SESSION['message'])){
-				echo $_SESSION['message'];
-				unset ($_SESSION['message']);
-			} 
-		?></center>
+		
+			<center><img src="images/images.png" alt="Not found"width="100" height="100"></center>
+			<br>
+			
 	   <div class ="form">
+			<?php
+                        session_start();
+                        if(isset($_SESSION['message'])){
+                                //echo $_SESSION['message'];
+                                echo "<p class='all'>".$_SESSION['message']."<p>";
+                                unset ($_SESSION['message']);
+                        }
+                          if(isset($_SESSION['error'])){
+                                //echo $_SESSION['error'];
+                                   echo "<p class='all'>".$_SESSION['error']."<p>";
+                                unset ($_SESSION['error']);
+                        }
+                ?>
 			<form id="contactform" action="check.php" method="GET">
 			<p class="contact"><label for="username">UserName</label></p>
                         <input id="username" name="username" placeholder="username" required="" type="text">
@@ -39,9 +49,8 @@
 
                         <br><br><br>
                         <input class="buttom" name="signin" id="signin" value="Sign in" type="submit">&nbsp;&nbsp;
-			<input class="buttom" name="cancel" id="cancel" value="Cancel" type="reset">
-                        <br><br>
-			<a href="http://idl.com/reg.html"><strong>New User?</strong></a>
+			<input class="buttom" name="cancel" id="cancel" value="Cancel" type="reset">&nbsp;&nbsp;
+			<a href="http://idl.com/reg.php" class="link"><strong>New User?</strong></a>
 			</form>
            </div>
 </div>

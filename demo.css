@@ -1,6 +1,6 @@
 /* CSS reset */
 
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote { 
 
 	margin:0;
 
@@ -8,7 +8,8 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 
 }
 
-html,body {
+
+html,body{
 
 	margin:0;
 
@@ -18,12 +19,33 @@ html,body {
 
 }
 
-table {
 
-	border-collapse:collapse;
+div.show {
+	background-color: yellow;
+    padding: 25px;
+    border: 15px solid red;
+    border-radius: 10px;
+    margin: 25px;
+    color: black;
+}
+a.link{background:  #7bec10; display: inline-block; padding: 5px 10px 6px; color: #222723; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
+p.msg{background: #4b8df9; display: inline-block; padding: 5px 10px 6px; color: #fbf7f7; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
 
-	border-spacing:0;
+table, td, th {
 
+
+    border: 1px solid green;
+    padding: 10px 10px 2px 10px;
+
+
+}
+th {
+    background-color: green;
+    color: white;
+}
+tr{
+	background-color:#7ba5bf;
+	color:black;
 }
 
 img { 

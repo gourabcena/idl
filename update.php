@@ -18,12 +18,12 @@
 		//$row=mysqli_fetch_array($sql);
     		//$name = $row['name'];
 	}
-	if(!empty($_POST['email'])){
+	/*if(!empty($_POST['email'])){
                 $name=$_POST['email'];
                 $sql=mysqli_query($con,"UPDATE user SET email='$name' WHERE u_id=$id");
                 //$row=mysqli_fetch_array($sql);
                 //$name = $row['name'];
-        }
+        }*/
 	if(!empty($_POST['city'])){
                 $name=$_POST['city'];
                 $sql=mysqli_query($con,"UPDATE user SET city='$name' WHERE u_id=$id");
@@ -49,9 +49,9 @@
                 //$row=mysqli_fetch_array($sql);
                 //$name = $row['name'];
         }
-	if(!empty($_POST['username'])){
+	/*if(!empty($_POST['username'])){
                 $name=$_POST['username'];
-		 $sql1="SELECT * FROM user WHERE username='$name'";
+		$sql1="SELECT * FROM user WHERE username='$name'AND u_id!=$id";
         	$rs=mysqli_query($con,$sql1);
         	if(mysqli_num_rows($rs)==0){
 
@@ -61,11 +61,12 @@
 			break;
                 }
 		else{
-			//echo "fail";
+			$_SESSION['username']="Username is already exist";
 			header('location:edit.php');
 			break;
 		}
-        }
+        }*/
+	$_SESSION['update']="Profile is updated";
 	header('location:profile.php');
 
 	     

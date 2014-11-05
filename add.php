@@ -13,6 +13,7 @@
             <div class="idl-top">
                 <a href="http://idl.com"><strong>Home</strong></a>
 		<span><a href="http://idl.com/profile.php"><strong>My Profile</strong></a></span>
+                <span><a href="http://idl.com/team.php"><strong>My Team</strong></a></span>
                 <span class="right">
                     <a href="http://idl.com/logout.php">
                         <strong>Log Out</strong>
@@ -22,7 +23,7 @@
 
             </div>
                         <header>
-                                <h1>Available Contributor</h1>
+                                <h1>Available Contributors</h1>
                         </header>
 		 <?php
                  session_start();
@@ -35,22 +36,42 @@
 
       <div  class="form">
                         <form id="contactform" action="ad.php" method="post">
-			<p class="contact"><label for="add">Add User</label></p>
-                        <input id="name" name="name" placeholder="user_id" required="" type="text">
+			<!--p class="contact"><label for="add">Add or Remove User</label></p>
+                        <input id="name" name="name" placeholder="user_id" required="" type="text"><br><br--!>
                         <?php
                                 include"db.php";
                                 session_start();
+				if($_SESSION['role']==2){
                                 $id=$_SESSION['u_id'];
-                                $rs=mysqli_query($con,"SELECT user.u_id,roleuser.r_id, user.username from roleuser INNER JOIN user ON roleuser.u_id=user.u_id WHERE roleuser.r_id=3 AND user.status=1 AND user.u_id not IN(SELECT u_id from contributor)");
-				echo "<table border='1'>
+				if(isset($_SESSION['re'])){
+					   echo "<p class='all'>".$_SESSION['re']."<p>";
+					unset($_SESSION['re']);
+				}
+				 if(isset($_SESSION['er'])){
+                                        echo "<p class='all'>".$_SESSION['er']."<p>";
+                                        unset($_SESSION['er']);
+                                }
+                                $rs=mysqli_query($con,"SELECT user.u_id,roleuser.r_id, user.username, user.name, user.email, user.drupal, user.phone from roleuser INNER JOIN user ON roleuser.u_id=user.u_id WHERE roleuser.r_id=3 AND user.status=1 AND user.u_id not IN(SELECT u_id from contributor)");
+				if(mysqli_num_rows($rs)>0){
+				/*echo "<table border='1'>
         			<tr>
         			<td>UserId</td>
         			<td>Role</td>
         			<td>Username</td>
-        			</tr>";
+        			</tr>";*/
 				while($row = mysqli_fetch_array($rs)) {
+				
+				$i=$row['u_id'];
+				echo"<div class= 'show'>
+                                        <h2>User Name: ".$row['username']."<h2>
+					<p> Name: ".$row['name']."<p>
+					<p>Email: ".$row['email']."<p>
+					<p>Drupal Link: ".$row['drupal']."<p>
+					<p>Phone no: ".$row['phone']."<p>                
+				<p><a href='http://idl.com/ad.php?id=$i&status=1'class='link'>Add</a><p></div>";
+				echo"<br>";
 
-                		echo "<tr>";
+                		/*echo "<tr>";
                 		echo "<td>". $row['u_id']."</td>";
                 		if($row['r_id']==2)
                 		{
@@ -60,21 +81,30 @@
                         		echo"<td>Contributor</td>";
                 		}
                 		echo "<td>" . $row['username'] . "</td>";
-                /*if($row['status']==0){
-
-                        echo "<td>Not Approved</td>";
-                }
-                else{
-                        echo"<td>Approved</td>";
-                }*/
-                		echo "</tr>";
+                		echo "</tr>";*/
 				}		
 
-				echo "</table>";
+				//echo "</table>";
+				}
+				else{
+					echo"<p class='contact'><label for='add1'>No contributor is available</label></p>";
+				}
 				echo"<br><br><br><br>";
-				?>
-				<input class="buttom" name="add" id="add" value="Add" type="submit">&nbsp;&nbsp;
-				<input class="buttom" name="remove" id="remove" value="Remove" type="submit">
+				}
+			 else{
+                	//$_SESSION['alert']="You have not the permission to view the content";
+                	//header('location:profile.php');
+                	//break;
+			echo"<center>";
+                	echo"<p class='msg'> Access Denied !!<p>";
+                	echo"</center>";
+
+        		}
+
+			?>
+				
+				<!--input class="buttom" name="add" id="add" value="Add" type="submit">&nbsp;&nbsp;
+				<input class="buttom" name="remove" id="remove" value="Remove" type="submit"--!>
 
 			</form>
 		</div>

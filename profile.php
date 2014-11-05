@@ -35,82 +35,129 @@
 			include "db.php";
 			session_start();
 			if(isset($_SESSION['user'])){
-			$user=$_SESSION['user'];
-			$query=mysqli_query($con,"SELECT * from user WHERE username='$user'");
-			while($row = mysqli_fetch_array($query)) {
-				$_SESSION['u_id']=$row['u_id'];
-				echo "<table border='1'>";
-  				echo "<tr>";
-				echo"<td>User ID</td>";
-  				echo "<td>". $row['u_id']."</td>";
-				echo "</tr><tr>";
-				echo"<td>Name</td>";
-  				echo "<td>" . $row['name'] . "</td>";
-				echo"</tr><tr>";
-				echo"<td>User Name</td>";
-  				echo "<td>" . $row['username'] . "</td>";
-				echo"</tr><tr>";
-				echo"<td>Date Of Birth</td>";
-  				echo "<td>" . $row['dob'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>Date Of Joining</td>";
-  				echo "<td>" . $row['doj'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>Phone no</td>";
-  				echo "<td>" . $row['phone'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>Gender</td>";
-  				echo "<td>" . $row['gender'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>City</td>";
-   				echo "<td>" . $row['city'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>Drupal Link</td>";
-  				echo "<td>" . $row['drupal'] . "</td>";
-				echo "</tr><tr>";
-				echo"<td>Email</td>";
-				echo "<td>" . $row['email'] . "</td>"; 
-  				echo "</tr>";
-				}
-			echo "</table>";
-			//$_SESSION['u_id']=$row['u_id'];
-			//$u=$_SESSION['u_id'];
-			//echo $row['name'];
-			//echo (int);
-			//echo $_SESSION['u_id'];
-			//echo "gourab";
-			$sql=mysqli_query($con,"SELECT r_id from roleuser WHERE u_id IN (SELECT u_id from user WHERE username='$user')");
-			$row=mysqli_fetch_array($sql);
-			//$u=$row['r_id'];
-			//echo $u;
-			if($row['r_id']==1)
-			{
-				
-				echo "<br><br><br>";
-				echo"<a href='http://idl.com/list.php'>
-                        	<strong>Approve user</strong>";
-				
-			}
-			if($row['r_id']==2)
-			{
-				echo "<br><br><br>";
-				echo"<a href='http://idl.com/team.php'>
-                        		<strong>Team Management</strong>";
-				
-			}
-			if($row['r_id']==3)
-                        {
-                                echo "<br><br><br>";
-                                 echo"<a href='http://idl.com/history.php'>
-                        	<strong>USER HISTORY</strong>";
-				//echo "<input class='buttom' name='history' value='Your history' id='history'>";
-                        }
+				$user=$_SESSION['user'];
+				if(isset($_SESSION['alert'])){
+                                        //echo $_SESSION['alert'];
+					   echo "<p class='all'>".$_SESSION['alert']."<p>";
+                                        echo"<br>";
+                                        unset($_SESSION['alert']);
+                                }
 
-			//mysqli_close($con);
+				if(isset($_SESSION['update'])){
+					//echo $_SESSION['update'];
+					   echo "<p class='all'>".$_SESSION['update']."<p>";
+					echo"<br>";
+					unset($_SESSION['update']);
+				}
+				$query=mysqli_query($con,"SELECT * from user WHERE username='$user'");
+				//$ro = mysqli_fetch_array($query);
+				while($row = mysqli_fetch_array($query)) {
+					$_SESSION['u_id']=$row['u_id'];
+					echo "<table border='1'>";
+  					echo "<tr>";
+					echo"<th>User ID</th>";
+  					echo "<td>". $row['u_id']."</td>";
+					echo "</tr><tr>";
+					echo"<th>Name</th>";
+  					echo "<td>" . $row['name'] . "</td>";
+					echo"</tr><tr>";
+					echo"<th>User Name</th>";
+  					echo "<td>" . $row['username'] . "</td>";
+					echo"</tr><tr>";
+					echo"<th>Date Of Birth</th>";
+  					echo "<td>" . $row['dob'] . "</td>";
+					echo "</tr><tr>";
+					echo"<th>Date Of Joining</th>";
+  					echo "<td>" . $row['doj'] . "</td>";
+					echo "</tr><tr>";
+					echo"<th>Phone no</th>";
+  					echo "<td>" . $row['phone'] . "</td>";
+					echo "</tr><tr>";
+					echo"<th>Gender</th>";
+					if($row['gender']=='M'){
+  					echo "<td>Male</td>";
+					}
+					if($row['gender']=='F'){
+					echo "<td>Female</td>";
+					}
+					echo "</tr><tr>";
+					echo"<th>City</th>";
+   					echo "<td>" . $row['city'] . "</td>";
+					echo "</tr><tr>";
+					echo"<th>Drupal Link</th>";
+  					echo "<td>" . $row['drupal'] . "</td>";
+					echo "</tr><tr>";
+					echo"<th>Email</th>";
+					echo "<td>" . $row['email'] . "</td>"; 
+  					echo "</tr>";
+					}
+				echo "</table>";
+				//$_SESSION['u_id']=$row['u_id'];
+				//$u=$_SESSION['u_id'];
+				//echo $row['name'];
+				//echo (int);
+				//echo $_SESSION['u_id'];
+				//echo "gourab";
+				//if($row2['status']==1)
+				$sql=mysqli_query($con,"SELECT r_id from roleuser WHERE u_id IN (SELECT u_id from user WHERE username='$user')");
+				$row=mysqli_fetch_array($sql);
+					$_SESSION['role']=$row['r_id'];
+					//echo $u;
+				if($row['r_id']==1)
+				{
+				
+					echo "<br>";
+					echo"<p class='all'>Admin<p><br><br>";
+					echo"<a href='http://idl.com/list.php'class='link'>
+                        		<strong>Approve user</strong></a>";
+					echo"<br><br>";
+					echo"<a href='http://idl.com/adreg.php'class='link'>
+                                	<strong>Add Another Admin?>> Click Here</strong></a>";
+				
+				}
+				$query=mysqli_query($con,"SELECT * from user WHERE username='$user'");
+                                $ro = mysqli_fetch_array($query);
+				 if($ro['status']==0 and $row['r_id']!=1){
+					echo"<br>";
+                                        echo "<p class='all'>Your approval is pending!!<p>";
+					echo"<br>";
+                                }
+				else{
+
+				if($row['r_id']==2)
+				{
+					echo "<br>";
+					echo"<p class='all'>Manager<p><br><br>";
+					echo $_SESSION['app'];
+					unset($_SESSION['app']);
+					echo"<br><br>";
+					echo"<a href='http://idl.com/team.php' class='link'>
+                        		<strong>Team Management</strong></a>";
+				
+				}	
+				if($row['r_id']==3)
+                        	{
+                                	echo "<br>";
+					echo"<p class='all'>Contributor<p><br><br>";
+					echo $_SESSION['app'];
+                               	 	unset($_SESSION['app']);
+                                	echo"<br><br>";
+                                	echo"<a href='http://idl.com/history.php' class='link'>
+                        		<strong>USER HISTORY</strong></a>";
+					//echo "<input class='buttom' name='history' value='Your history' id='history'>";
+                        	}
+
+				//mysqli_close($con);
 			
-			echo"<br><br>";
+				echo"<br><br>";
 						
-	    		echo"<input class='buttom' name='edit' id='edit' value='Edit Profile' type='submit'>"; 
+	    			echo"<input class='buttom' name='edit' id='edit' value='Edit Profile' type='submit'>";
+				}
+			
+				/*else
+				{
+					echo"Your approval is pending";
+				}*/ 
 			}
 			else{
 				$_SESSION['message']="Please Log in to continue";

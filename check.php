@@ -12,6 +12,7 @@
 	$sql="SELECT * FROM `user` WHERE username='$username'and password='$pa'";
 	$result=mysqli_query($con,$sql);
 	//$count=mysqli_num_rows($result);
+	$row=mysqli_fetch_array($result);
 	if(mysqli_num_rows($result)==0)
 	{
 		$_SESSION['message']="Wrong username/password";
@@ -20,8 +21,15 @@
 		
 	}
 	else{
+		if($row['status']==2){
+			 $_SESSION['message']="you are not approved";
+			header('location:login.php');
+			break;
+		}
+		else{
 		$_SESSION['user']=$username;
 		header('location:profile.php');
+		}
 	}
 	mysqli_close($con);
 ?>

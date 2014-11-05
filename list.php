@@ -12,7 +12,7 @@
 <body>
 <div class="container">
             <div class="idl-top">
-                <a href="http://idl.com" target="_blank">Home</a>
+                <a href="http://idl.com">Home</a>
                 <span>
                     <a href="http://idl.com/profile.php">
                         <strong>My Profile</strong>
@@ -33,26 +33,36 @@
 
 
       <div  class="form">
-    			<form id="contactform" action="approval.php" method="post"> 
-    			<p class="contact"><label for="name">Enter the user_ID</label></p> 
-    			<input id="name" name="name" placeholder="U_ID" required="" type="text"> 
+    			<form action="approval.php" method="post"> 
+    			<!--p class="contact"><label for="name">Enter the user_ID</label></p--!> 
+    			<!--input id="name" name="name" placeholder="U_ID" required="" type="text"--!> 
+			<br>
 <?php
 	include "db.php";
 	session_start();
 	if(isset($_SESSION['user'])){
+	if(isset($_SESSION['msg'])){
+		//echo $_SESSION['msg'];
+		
+		echo"<p class='all'>".$_SESSION['msg']."<p><br>";
+		unset($_SESSION['msg']);
+		echo"<br>";
+	}
+	if($_SESSION['role']==1){
 	//$sql="SELECT * from user WHERE u_id IN(SELECT u_id from roleuser WHERE r_id!=1 and status IS NULL)";
-	$result=mysqli_query($con,"SELECT user.u_id,roleuser.r_id, user.username,user.status from roleuser INNER JOIN user ON roleuser.u_id=user.u_id WHERE roleuser.r_id!=1");
-	echo "<table border='1'>
-	<tr>
-	<td>UserId</td>
-	<td>RoleId</td>
-	<td>Username</td>
-	<td>Status</td>
-	</tr>";
-	while($row = mysqli_fetch_array($result)) {
+		$result=mysqli_query($con,"SELECT user.u_id,roleuser.r_id, user.username,user.status from roleuser INNER JOIN user ON roleuser.u_id=user.u_id WHERE roleuser.r_id!=1");
+		echo "<table border='1' align='center'>
+		<tr>
+		<th>Role</th>
+		<th>Username</th>
+		<th>Status</th>
+		<th>Action</th>
+		</tr>";
+		while($row = mysqli_fetch_array($result)) {
 		
   		echo "<tr>";
-  		echo "<td>". $row['u_id']."</td>";
+  		//echo "<td>". $row['u_id']."</td>";
+		$i=$row['u_id'];
 		if($row['r_id']==2)
   		{
 			echo "<td>Manager</td>";
@@ -61,28 +71,56 @@
 			echo"<td>Contributor</td>";
 		}
   		echo "<td>" . $row['username'] . "</td>"; 
+		$s=$row['status'];
 		if($row['status']==0){
 
-  			echo "<td>Not Approved</td>";
+  			echo "<td>Pending</td>";
 		}
-		else{
+		if($row['status']==1){
 			echo"<td>Approved</td>";
 		}
-  		echo "</tr>";
-}
+		if($row['status']==2){
+                        echo"<td>Rejected</td>";
+                }
+		/*if($row['status']==0){
+		echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s'>Add</a></td>";
+		}*/
+		if($row['status']==1){
+			echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s' class='link'>Remove</a></td>";
+		}
+		if($row['status']==0){
+                echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s' class='link'>Add</a></td>";
+                }
+                if($row['status']==2){
+                        echo "<td>No Action is Required</td>";
+                }
 
-echo "</table>";
-echo"<br><br><br><br>";
+  		echo "</tr>";
+	}
+
+	echo "</table>";
+	echo"<br><br><br><br>";
+	}
+	else{
+		 echo"<center>";
+        	echo"<p class='msg'> Access Denied<p>";
+        	echo"</center>";
+	
+		//$_SESSION['alert']="You have not the permission to view the content";
+		//header('location:profile.php');
+		//break;
+	}
 }
 else{
 	header('location:login.php');
-	break;}
+                break;
+	}
 	//$sql1="UPDATE roleuser SET status=1 WHERE status IS NULL";
 	//mysqli_query($con,$sql1);
 	
 ?>
-<input class="buttom" name="approve" id="approve" value="Approve" type="submit">&nbsp;&nbsp;
-<input class="buttom" name="remove" id="remove" value="Remove" type="submit">
+<!--input class="buttom" name="approve" id="approve" value="Approve" type="submit">&nbsp;&nbsp;
+<input class="buttom" name="remove" id="remove" value="Remove" type="submit"--!>
 </form>
 </div>
 </div>

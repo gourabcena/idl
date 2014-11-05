@@ -3,8 +3,8 @@
 <body>
 <?php
 	include "db.php";
-	/*session_start();
-	$dbname=$_SESSION['dbname'];
+	session_start();
+	/*$dbname=$_SESSION['dbname'];
 	$dbname1=$_SESSION['dbname1'];
 	$pass=$_SESSION['password'];*/
 	/*$_SESSION['error']="Username already exists";*/
@@ -33,13 +33,14 @@
                         $row = mysqli_fetch_array($rs);
                         $us=$row['u_id'];
                         $sql1="INSERT INTO roleuser(u_id,r_id) VALUES('$us','$role')";
-                        mysqli_query($con,$sql1);	
+                        mysqli_query($con,$sql1);
+			   $_SESSION['error']="Registraion is done!!";	
 			header('location:login.php');
 		}
 	}
 	else{
-		/*$_SESSION['error']="Username already exists";*/
-		header('location:reg.html');
+		$_SESSION['error']="Username already exists";
+		header('location:reg.php');
 	}	
 	mysqli_close($con);
 ?>

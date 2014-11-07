@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html>
-<body>
-<?php
-$domain=$_POST['domain'];
-$dbname1=$_POST['dbname1'];
-$password=$_POST['password'];
-$pw=md5($password);
-$conn = new mysqli($_POST['domain'], $_POST['dbname1'], $_POST['password']);
-if ($conn->connect_error) {
-
-    header('Location: install.php');
-}
-$name=$_POST['dbname'];
-$sql = "CREATE DATABASE IF NOT EXISTS`$name`";
-if (mysqli_query($conn, $sql)) {
-  header('Location:adreg.php');
-}
-$conn = mysqli_connect("idl.com", $_POST['dbname1'], $_POST['password'], $name); 
-$sql5 = "CREATE TABLE user (u_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,name VARCHAR(60),username VARCHAR(30),dob VARCHAR(12),doj VARCHAR(12),phone BIGINT,gender VARCHAR(5),city VARCHAR(30),password VARCHAR(40),drupal VARCHAR(60),email VARCHAR(60),status INT(2) default '0')";
-mysqli_query($conn,$sql5);
-$sql1 = "CREATE TABLE team (team_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,teamname VARCHAR(30),u_id INT)";
-mysqli_query($conn,$sql1);
-$sql2 = "CREATE TABLE role (r_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,role VARCHAR(12))";
-mysqli_query($conn,$sql2);
-$sql3 = "CREATE TABLE contributor(u_id INT,team_id INT,commit INT(5) default '0',edit INT(5) default '0',review INT(5) default '0')";
-mysqli_query($conn,$sql3);
-$sql4="CREATE TABLE roleuser(u_id INT,r_id INT)"; 
-mysqli_query($conn,$sql4);
-//$sql6="CREATE TABLE system(s_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,domain VARCHAR(20),dbname1 VARCHAR(20),password VARCHAR(20),dbname VARCHAR(20))";
-//mysqli_query($conn,$sql6);
-//$sql7="INSERT INTO system(domain,dbname1,password,dbname) VALUES('$domain','$dbname1','$pw','$name')";
-//mysqli_query($conn,$sql7);
-$sql8="INSERT INTO role(role) VALUES('Admin'),('Manager'),('Contributor')";
-mysqli_query($conn,$sql8);
-mysqli_close($conn);
-?>
-</body>
+  <head>
+    <title>WebMaster Registration Form</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="demo.css" media="all" />
+  </head>
+  <body>
+    <?php session_start(); ?>
+    <div class="container">
+      <div class="idl-top">
+       <a href="http://idl.com">Home</a>
+       <span>
+         <a href="http://idl.com/profile.php">
+         <strong>My Profile</strong>
+         </a>
+       </span>
+       <span class="right">
+         <a href="http://idl.com/logout.php">
+           <strong>Log Out</strong>
+         </a>
+       </span>
+       <div class="clr"></div>
+       <div class="idl-demos">
+         <?php if(!empty($_SESSION['error'])) { echo $_SESSION['error']; } ?>
+       </div>
+       <?php unset($_SESSION['error']); ?>
+       <div class="clr"></div>
+     </div>
+     <header>
+       <h1> Webmaster Registration Form</h1>
+     </header>       
+     <div  class="form">
+       <form id = "contactform"action = "adminentry.php"method = "post"> 
+         <?php
+	   /*It will throw error if anyone other than webmaster tries to access the page*/
+	   if (($_SESSION['role']!= 1) and !isset ($_SESSION['install'])){
+              echo"<center>";
+              echo"<p class='msg'> Access Denied<p>";
+              echo"</center>";
+	      break;
+	   }
+	   unset($_SESSION['install']);
+	 ?>
+    	 <p class = "contact"><label for = "name">Name</label></p> 
+    	 <input id = "name" name = "name" placeholder="First and last name" required="" type="text"> 	 
+    	 <p class = "contact"><label for = "email">Email</label></p> 
+    	 <input id = "email" name = "email" placeholder="example@domain.com" required="" type="email">               
+         <p class="contact"><label for="username">Create a username</label></p> 
+         <input id="username" name="username" placeholder="username" required="" type="text">
+         <?php 
+           session_start();
+           echo"<br>";
+           echo $_SESSION['error'];
+           unset($_SESSION['error']);
+         ?>
+         <p class="contact"><label for="password">Create a password</label></p> 
+    	 <input type="password" id="password" name="password" onchange="form.repassword.pattern=this.value"; required=""> 
+         <p class="contact"><label for="repassword">Confirm your password</label></p> 
+         <input type="password" id="repassword" name="repassword" required="">
+         <p class="contact"><label for="drupal">Drupal Profile link</label></p>
+	 <input type="url" id="url" name="url" placeholder="drupal.org" required="">
+	 <p class="contact"><label for="city">City</label></p>
+	 <select class="select-style" name="city">
+	   <option value="kolkata"> Kolkata </option>
+	   <option value="mumbai"> Mumbai </option>
+	   <option value="delhi"> Delhi </option>
+	   <option value="chennai">Chennai </option>
+	 </select>
+         <p class="contact"><label for="dob"> Date Of Birth</label></p>
+         <input type="date" name="dob"id="dob"><br>  
+	 <p class="contact"><label for="doj"> Date Of Joining</label></p>
+	 <input type="date" name="doj"id="doj"><br>	
+         <p class="contact"><label for="gen"> Gender :&nbsp;</label>
+	   <input type="radio" name="gen" value="M">&nbsp;&nbsp;MALE
+           <input type="radio" name="gen" value="F">&nbsp;&nbsp;FEMALE
+	 </p>            
+         <p class="contact"><label for="phone">Mobile phone</label></p> 
+         <input id="phone" name="phone" placeholder="phone number" required="" type="tel"> <br>
+         <input class="buttom" name="submit" id="submit" tabindex="5" value="Add Admin!" type="submit">&nbsp;&nbsp;
+         <input class="buttom" name="clear" id="clear"  value="Clear" type="reset"> 	 
+       </form> 
+     </div>      
+   </div>
+ </body>
 </html>
-

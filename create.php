@@ -13,7 +13,7 @@
 	}
 	$name = $_POST['dbname'];/*$name is the database that you are going to create for idl*/
 	$sql = "CREATE DATABASE IF NOT EXISTS`$name`";
-	mysqli_query($conn, $sql)
+	mysqli_query($conn, $sql);
 	$conn = mysqli_connect("idl.com", $_POST['dbname1'], $_POST['password'], $name); 
 	/*Table Creation*/
 	$sql5 = "CREATE TABLE user (u_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,name VARCHAR(60),username VARCHAR(30),dob VARCHAR(12),doj VARCHAR(12),phone BIGINT,gender VARCHAR(5),city VARCHAR(30),password VARCHAR(40),drupal VARCHAR(60),email VARCHAR(60),status INT(2) default '0')";
@@ -32,7 +32,7 @@
 	//mysqli_query($conn,$sql7);
 	$sql8 = "INSERT INTO role(role) VALUES('Admin'),('Manager'),('Contributor')";
 	mysqli_query($conn,$sql8);
-	header('Location:adreg.php');
+	header('Location:adminreg.php');
 	mysqli_close($conn);
 ?>
 </body>

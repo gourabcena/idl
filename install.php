@@ -34,6 +34,10 @@
              <input id="password" name="password" placeholder="Enter your password" required="" type="password">
              <br><br><br>
              <input class="buttom" name="create" id="create" value="Create" type="submit">
+	     <?php
+	       session_start();
+	       $_SESSION['install'] = "done";/*it indictaes that request for webmaster registration is coming from installation page*/
+             ?>
              <br><br><br>
            </form>
          </div>

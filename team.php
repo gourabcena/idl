@@ -37,7 +37,7 @@
           <?php
 	  	include"db.php";
 	    	session_start();
-		/*show message about adding user*/
+		/*show message about adding user & team creation*/
 	    	if (isset($_SESSION['remove'])){
 			echo"<p class='all'>". $_SESSION['remove']."<p>";
 			unset($_SESSION['remove']);
@@ -54,8 +54,8 @@
         	    		if (mysqli_num_rows($rs) == 0){
 		        	echo"<p class='contact'><label for='name'>Enter Your Team Name</label></p>"; 
     				echo"<input id='name' name='name' placeholder='Team Name' required='' type='text'>";
-				echo"<p class='contact'><label for='name'>Enter Your Id</label></p>";
-                        	echo"<input id='uid' name='uid' placeholder='Enter your id' required='' type='text'><br><br>";
+				/*echo"<p class='contact'><label for='name'>Enter Your Id</label></p>";
+                        	echo"<input id='uid' name='uid' placeholder='Enter your id' required='' type='text'><br><br>";*/
 		        	echo"<input class='buttom' name='create' id='create' value='create' type='submit'>&nbsp;&nbsp;
 	   		     	<input class='buttom' name='clear' id='clear' value='Clear' type='reset'>";
 		    		}

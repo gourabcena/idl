@@ -103,11 +103,11 @@
 			  if ($row['r_id']==1){
 				  echo "<br>";
 				  echo"<p class='all'>Admin<p><br><br>";
-				  echo"<a href='http://idl.com/list.php'class='link'>
-                       <strong>Approve user</strong></a>";
+				  echo"<a href='http://idl.com/showuser.php'class='link'>
+                                       <strong>Approve user</strong></a>";
 				  echo"<br><br>";
 				  echo"<a href='http://idl.com/adminreg.php'class='link'>
-                       <strong>Add Another Admin?>> Click Here</strong></a>";
+                                       <strong>Add Another Admin?>> Click Here</strong></a>";
 				
 			  }
 			  /*$user always stores the username of the current user*/

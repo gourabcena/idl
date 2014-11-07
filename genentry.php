@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-<body>
-<?php
-	include "db.php";
+  <body>
+  <?php
+  	include "db.php";
 	session_start();
 	/*$dbname=$_SESSION['dbname'];
 	$dbname1=$_SESSION['dbname1'];
@@ -20,21 +20,21 @@
 	$doj = mysqli_real_escape_string($con, $_POST['doj']);
 	$gen = mysqli_real_escape_string($con, $_POST['gen']);
 	$phone = mysqli_real_escape_string($con, $_POST['phone']);
-	$pw=md5($password);
-	$sql1="SELECT * FROM user WHERE username='$username'";
-	$rs=mysqli_query($con,$sql1);
-	
-	if(mysqli_num_rows($rs)==0){
+	$pw = md5($password);
+	$sql1 = "SELECT * FROM user WHERE username='$username'";
+	$rs = mysqli_query($con,$sql1);	
+	if (mysqli_num_rows($rs) == 0){
 		$sql="INSERT INTO user (name,username,dob,doj,phone,gender,city,password,drupal,email)
 		VALUES ('$name', '$username','$dob','$doj','$phone','$gen','$city','$pw','$url','$email')";
 		if (mysqli_query($con,$sql))
 		{
-			$rs=mysqli_query($con,"SELECT * FROM user WHERE username='$username'");
+			$rs = mysqli_query($con,"SELECT * FROM user WHERE username='$username'");
                         $row = mysqli_fetch_array($rs);
-                        $us=$row['u_id'];
-                        $sql1="INSERT INTO roleuser(u_id,r_id) VALUES('$us','$role')";
+                        $us = $row['u_id'];
+			/*after inserting in the user table the corrosponding role_id is inserted into roleuse*/
+                        $sql1 = "INSERT INTO roleuser(u_id,r_id) VALUES('$us','$role')";
                         mysqli_query($con,$sql1);
-			   $_SESSION['error']="Registraion is done!!";	
+			$_SESSION['error']="Registraion is done!!";	
 			header('location:login.php');
 		}
 	}
@@ -43,8 +43,8 @@
 		header('location:reg.php');
 	}	
 	mysqli_close($con);
-?>
-</body>
+     ?>
+  </body>
 </html>
 
 

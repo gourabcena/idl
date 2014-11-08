@@ -11,14 +11,14 @@
    </head>
    <div class="container">
      <div class="idl-top">
-       <a href="http://idl.com">Home</a>
+       <a href="/index.html">Home</a>
        <span>
-         <a href="http://idl.com/profile.php">
+         <a href="/profile.php">
            <strong>My Profile</strong>
          </a>
        </span>
        <span class="right">
-         <a href="http://idl.com/logout.php">
+         <a href="/logout.php">
            <strong>Logout</strong>
          </a>
        </span>
@@ -77,10 +77,10 @@
 		   echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s'>Add</a></td>";
 		   }*/
 		   if ($row['status'] == 1){
-		      echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s' class='link'>Remove</a></td>";
+		      echo "<td><a href='/approval.php?u_id=$i&status=$s' class='link'>Remove</a></td>";
 		   }
 		   if ($row['status'] == 0){
-                      echo "<td><a href='http://idl.com/approval.php?u_id=$i&status=$s' class='link'>Add</a></td>";
+                      echo "<td><a href='/approval.php?u_id=$i&status=$s' class='link'>Add</a></td>";
                    }
                    if ($row['status'] == 2){
                       echo "<td>No Action is Required</td>";

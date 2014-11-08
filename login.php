@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="http://idl.com"><strong>Home</strong></a>
+        <a href="/index.html"><strong>Home</strong></a>
         <div class="clr"></div>
       </div>                        
       <header>
@@ -19,7 +19,7 @@
       </header>
       <center><img src="images/images.png" alt="Not found"width="100" height="100"></center>
       <br>			
-      <div class ="form">
+      <div class ="form">	
         <?php
           session_start();
 	    /*if user has already logged in redirected to his profile*/
@@ -29,12 +29,12 @@
 	    }
 	    /*It will show please login to continue if anyone tries to access his profile page without doing log in*/
             if (isset($_SESSION['message'])){
-                echo "<p class='all'>".$_SESSION['message']."<p>";
+                echo "<div class='show'><p class='all'>".$_SESSION['message']."<p></div>";
                 unset ($_SESSION['message']);
             }
 	    /*Throw error message for wrong username/password*/
             if (isset($_SESSION['error'])){
-                echo "<p class='all'>".$_SESSION['error']."<p>";
+                echo "<div class='show'><p class='all'>".$_SESSION['error']."<p></div>";
                 unset ($_SESSION['error']);
             }
           ?>
@@ -46,7 +46,7 @@
             <br><br><br>
             <input class="buttom" name="signin" id="signin" value="Sign in" type="submit">&nbsp;&nbsp;
 	    <input class="buttom" name="cancel" id="cancel" value="Clear" type="reset">&nbsp;&nbsp;
-	    <a href="http://idl.com/reg.php" class="link"><strong>New User?</strong></a>
+	    <a href="/reg.php" class="link"><strong>New User?</strong></a>
           </form>
         </div>
       </div>

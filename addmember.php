@@ -11,17 +11,17 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="http://idl.com"><strong>Home</strong></a>
+        <a href="/index.html"><strong>Home</strong></a>
 	  <span>
-            <a href="http://idl.com/profile.php"><strong>My Profile</strong>
+            <a href="/profile.php"><strong>My Profile</strong>
             </a>
           </span>
           <span>
-            <a href="http://idl.com/team.php"><strong>My Team</strong>
+            <a href="/team.php"><strong>My Team</strong>
             </a>
           </span>
           <span class="right">
-            <a href="http://idl.com/logout.php">
+            <a href="/logout.php">
               <strong>Log Out</strong>
             </a>
           </span>
@@ -63,7 +63,7 @@
 			     		<p>Email: ".$row['email']."<p>
 			     		<p>Drupal Link: ".$row['drupal']."<p>
 			     		<p>Phone no: ".$row['phone']."<p>                
-			     		<p><a href='http://idl.com/addrem.php?id=$i&status=1'class='link'>Add</a><p></div>";/*send the id & status through url*/
+			     		<p><a href='/addrem.php?id=$i&status=1'class='link'>Add</a><p></div>";/*send the id & status through url*/
 			     		/*status =1 means user is available to add*/
 			     		echo"<br>";
                       		}

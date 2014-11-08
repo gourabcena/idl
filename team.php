@@ -11,12 +11,12 @@
       </head>
    <div class="container">
      <div class="idl-top">
-       <a href="http://idl.com"><strong>Home</strong></a>
+       <a href="/index.html"><strong>Home</strong></a>
        <span>
-         <a href="http://idl.com/profile.php"><strong>My Profile</strong></a>
+         <a href="/profile.php"><strong>My Profile</strong></a>
        </span>
        <span class="right">
-         <a href="http://idl.com/logout.php">
+         <a href="/logout.php">
            <strong>log Out</strong>
          </a>
        </span>
@@ -91,7 +91,7 @@
 						<p>No of Commit : ". $row['commit']."<p>
 						<p>No of Edit : ". $row['edit']."<p>
 						<p>No of Review : ". $row['review']."<p>
-						<a href='http://idl.com/addrem.php?id=$d&status=0' class='link'>Remove</a></div>";
+						<a href='/addrem.php?id=$d&status=0' class='link'>Remove</a></div>";
 			     		}	
 			  	}
 			  	else{

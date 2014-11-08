@@ -11,9 +11,9 @@
     </head>
    <div class="container">
      <div class="idl-top">
-       <a href="http://idl.com">Home</a>
+       <a href="/index.html">Home</a>
        <span class="right">
-         <a href="http://idl.com/logout.php">
+         <a href="/logout.php">
            <strong>Log Out</strong>
          </a>
        </span>
@@ -103,10 +103,10 @@
 			  if ($row['r_id']==1){
 				  echo "<br>";
 				  echo"<p class='all'>Admin<p><br><br>";
-				  echo"<a href='http://idl.com/showuser.php'class='link'>
+				  echo"<a href='/showuser.php'class='link'>
                                        <strong>Approve user</strong></a>";
 				  echo"<br><br>";
-				  echo"<a href='http://idl.com/adminreg.php'class='link'>
+				  echo"<a href='/adminreg.php'class='link'>
                                        <strong>Add Another Admin?>> Click Here</strong></a>";
 				
 			  }
@@ -127,7 +127,7 @@
 					echo $_SESSION['app'];
 					unset($_SESSION['app']);
 					echo"<br><br>";
-					echo"<a href='http://idl.com/team.php' class='link'>
+					echo"<a href='/team.php' class='link'>
                          <strong>Team Management</strong></a>";
 				}
 				/*contributor*/	
@@ -137,7 +137,7 @@
 					echo $_SESSION['app'];
                     unset($_SESSION['app']);
                     echo"<br><br>";
-                    echo"<a href='http://idl.com/history.php' class='link'>
+                    echo"<a href='/history.php' class='link'>
                          <strong>USER HISTORY</strong></a>";
 					//echo "<input class='buttom' name='history' value='Your history' id='history'>";
                  }

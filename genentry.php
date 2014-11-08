@@ -21,7 +21,7 @@
 	$gen = mysqli_real_escape_string($con, $_POST['gen']);
 	$phone = mysqli_real_escape_string($con, $_POST['phone']);
 	$pw = md5($password);
-	$sql1 = "SELECT * FROM user WHERE username='$username'";
+	$sql1 = "SELECT * FROM user WHERE username='$username' or email = '$email'";
 	$rs = mysqli_query($con,$sql1);	
 	if (mysqli_num_rows($rs) == 0){
 		$sql="INSERT INTO user (name,username,dob,doj,phone,gender,city,password,drupal,email)
@@ -39,7 +39,7 @@
 		}
 	}
 	else{
-		$_SESSION['error']="Username already exists";
+		$_SESSION['error']="Username/email already exists";
 		header('location:reg.php');
 	}	
 	mysqli_close($con);

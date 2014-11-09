@@ -33,7 +33,7 @@
     	    <p class="contact"><label for="name">Name</label></p> 
     	    <input id="name" name="name" placeholder="First and last name" required="" type="text"> 	 
     	    <p class="contact"><label for="email">Email</label></p> 
-    	    <input id="email" name="email" placeholder="example@domain.com"required="" type="email">               
+    	    <input id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  placeholder="example@domain.com"required="" type="email">               
             <p class="contact"><label for="username">Create a username</label></p> 
     	    <input id="username" name="username" placeholder="username" required="" type="text">
 	    <?php 
@@ -67,7 +67,7 @@
               <input type="radio" name="gen" value="F">&nbsp;&nbsp;FEMALE
 	    </p>            
             <p class="contact"><label for="phone">Mobile phone</label></p> 
-            <input id="phone" name="phone" placeholder="phone number" required="" type="tel"> <br>
+            <input id="phone" name="phone"pattern="^\d{10}$" placeholder="phone number" required="" type="tel"> <br>
             <input class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit">&nbsp;&nbsp;
 	    <input class="buttom" name="clear" id="clear" value="Clear" type="reset"> 	 
           </form> 

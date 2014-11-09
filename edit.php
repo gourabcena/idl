@@ -67,7 +67,7 @@
 		  <option value="chennai">Chennai </option>
 		</select>            
               <p class="contact"><label for="phone">Change your Mobile phone no</label></p> 
-              <input id="phone" name="phone"value="<?php echo $phone;?>" type="tel"> <br>
+              <input id="phone" name="phone"value="<?php echo $phone;?>" type="tel" pattern="^\d{10}$"> <br>
               <input class="buttom" name="submit" id="submit" value="Upadte" type="submit">&nbsp;&nbsp;
 	   </form> 
          </div>      

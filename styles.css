@@ -14,7 +14,13 @@ body {
 	margin: 0 auto;
 	width: 960px;
 	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
-	background: #271408 url("images/bodybkg.gif") repeat;
+	/*background: #271408 url("images/bodybkg.gif") repeat;*/
+	background-color: #99e512;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#99e512), to(#999999));
+  background-image: -webkit-linear-gradient(top, #99e512, #999999);
+  background-image:    -moz-linear-gradient(top, #ffffff, #999999);
+  background-image:      -o-linear-gradient(top, #ffffff, #999999);
+  background-image:         linear-gradient(to bottom, #99e512, #999999);
 	}
 	
 /* standard alignments */
@@ -66,7 +72,7 @@ h1 {
 h2 {
 	font-size: 24px;
 	padding: 20px 0;
-	color:#185d92;
+	color:#b61b13;
 	text-decoration:underline;
 	}
 
@@ -77,7 +83,8 @@ h3 {
 	}
 
 p {
-	padding-bottom: 20px;
+	/*padding-bottom: 20px;*/
+	color: #74136b;
 	}
 
 /* nav */
@@ -188,7 +195,7 @@ nav ul li.subscribe a {
 	width: 920px; 
 	margin:10px 5px 10px 0; 
 	padding:5px 20px 5px 20px;
-	background-color: #f2ede7;
+	background: linear-gradient(0deg, black, #b61b13);
 	
 /* curved border radius */
 	-moz-border-radius: 10px;
@@ -217,7 +224,7 @@ nav ul li.subscribe a {
 	font-size: 1em;
 	margin-right: 10px; /*Creates the 10px gap between each column*/
 	padding: 20px;
-	background: #d6a965;
+	background: #eac082;
 /* curved border radius */
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;

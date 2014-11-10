@@ -22,6 +22,7 @@ html,body{
 
 div.show {
 	background-color: yellow;
+	width:200px;
     padding: 25px;
     border: 15px solid red;
     border-radius: 10px;
@@ -29,6 +30,9 @@ div.show {
     color: black;
 }
 a.link{background:  #7bec10; display: inline-block; padding: 5px 10px 6px; color: #222723; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
+a:hover {
+    background-color: #FF704D;
+}
 p.msg{background: #4b8df9; display: inline-block; padding: 5px 10px 6px; color: #fbf7f7; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
 
 table, td, th {

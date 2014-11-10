@@ -22,21 +22,21 @@
       <div class ="form">	
         <?php
           session_start();
-	    /*if user has already logged in redirected to his profile*/
-	    if (isset($_SESSION['user'])){
-		header('location:profile.php');
-	        break;
-	    }
-	    /*It will show please login to continue if anyone tries to access his profile page without doing log in*/
-            if (isset($_SESSION['message'])){
-                echo "<div class='show'><p class='all'>".$_SESSION['message']."<p></div>";
-                unset ($_SESSION['message']);
-            }
-	    /*Throw error message for wrong username/password*/
-            if (isset($_SESSION['error'])){
-                echo "<div class='show'><p class='all'>".$_SESSION['error']."<p></div>";
-                unset ($_SESSION['error']);
-            }
+	  //if user has already logged in redirected to his profile
+	  if (isset($_SESSION['user'])) {
+	    header('location:profile.php');
+	    break;
+	  }
+	  //It will show please login to continue if anyone tries to access his profile page without doing log in
+          if (isset($_SESSION['message'])) {
+            echo "<div class='show'><p class='all'>".$_SESSION['message']."<p></div>";
+            unset ($_SESSION['message']);
+          }
+	  //Throw error message for wrong username/password
+          if (isset($_SESSION['error'])) {
+            echo "<div class='show'><p class='all'>".$_SESSION['error']."<p></div>";
+            unset ($_SESSION['error']);
+          }
           ?>
 	  <form id="contactform" action="check.php" method="GET">
 	    <p class="contact"><label for="username">UserName</label></p>

@@ -10,7 +10,7 @@
 .form p.all{ font-size: 18px; margin:0px 0px 10px 0;line-height: 14px; font-family:Arial, Helvetica;color:#632d58;} 
 .form p.msg{background: #7bec10; display: inline-block; padding: 5px 10px 6px; color: #ec1010; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 50px; font-family:Verdana, Geneva, sans-serif;margin:0px 0px 10px 0;line-height: 30px; }
 
- a:link {
+/* a:link {
     background-color: #B2FF99;
 }
 
@@ -20,7 +20,7 @@ a:visited {
 
 a:hover {
     background-color: #FF704D;
-}
+}*/
 
 
 

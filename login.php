@@ -12,6 +12,9 @@
     <div class="container">
       <div class="idl-top">
         <a href="/index.html"><strong>Home</strong></a>
+        <span><a href="/login.php"><strong>Members Area</strong></a></span>
+        <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
+	<span><a href="/people.php"><strong>People</strong></a></span>
         <div class="clr"></div>
       </div>                        
       <header>
@@ -43,7 +46,8 @@
             <input id="username" name="username" placeholder="username" required="" type="text">
             <p class="contact"><label for="password">Password</label></p>
             <input id="password" name="password" placeholder="Enter your password" required="" type="password">
-            <br><br><br>
+            <br>
+            <a href="/forgot.php">Forgot Password?</a><br><br>
             <input class="buttom" name="signin" id="signin" value="Sign in" type="submit">&nbsp;&nbsp;
 	    <input class="buttom" name="cancel" id="cancel" value="Clear" type="reset">&nbsp;&nbsp;
 	    <a href="/reg.php" class="link"><strong>New User?</strong></a>

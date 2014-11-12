@@ -45,6 +45,7 @@
 		  echo"<br>";
 		  unset($_SESSION['update']);
 		}
+		echo "<p class='all'> Welcome ".$user."!!</p>";
 	        $query = mysqli_query($con,"SELECT * from user WHERE username='$user'");
 		while ($row = mysqli_fetch_array($query)) {
 		  $_SESSION['u_id']=$row['u_id'];

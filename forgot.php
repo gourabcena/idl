@@ -12,6 +12,9 @@
     <div class="container">
       <div class="idl-top">
         <a href="/index.html"><strong>Home</strong></a>
+        <span><a href="/profile.php"><strong>Profile</strong></a></span>
+        <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
+        <span><a href="/people.php"><strong>People</strong></a></span>
         <div class="clr"></div>
       </div>
       <header>

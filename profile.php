@@ -12,6 +12,9 @@
     <div class="container">
       <div class="idl-top">
         <a href="/index.html">Home</a>
+        <span><a href="/profile.php"><strong>My Profile</strong></a></span>
+        <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
+        <span><a href="/people.php"><strong>People</strong></a></span>
         <span class="right">
           <a href="/logout.php">
             <strong>Log Out</strong>
@@ -94,7 +97,7 @@
 		  echo "<p class='all'>Admin<p><br><br>";
 	          echo "<a href='/showuser.php'class='link'>
                         <strong>Approve user</strong></a>";
-	          echo "<br><br>";
+	          echo "<br>";
 		  echo "<a href='/adminreg.php'class='link'>
                         <strong>Add Another Admin?>> Click Here</strong></a>";
 		}
@@ -114,7 +117,7 @@
 		    echo"<p class='all'>Manager<p><br><br>";
 		    echo $_SESSION['app'];
 		    unset($_SESSION['app']);
-		    echo "<br><br>";
+		    echo "<br>";
 		    echo "<a href='/team.php' class='link'>
                           <strong>Team Management</strong></a>";
 		  }
@@ -124,7 +127,7 @@
 		    echo "<p class='all'>Contributor<p><br><br>";
 		    echo $_SESSION['app'];
                     unset($_SESSION['app']);
-                    echo "<br><br>";
+                    echo "<br>";
                     echo "<a href='/history.php' class='link'>
                           <strong>USER HISTORY</strong></a>";
                   }

@@ -20,6 +20,8 @@
           <a href="/team.php"><strong>My Team</strong>
           </a>
         </span>
+        <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
+        <span><a href="/people.php"><strong>People</strong></a></span>
         <span class="right">
           <a href="/logout.php">
             <strong>Log Out</strong>

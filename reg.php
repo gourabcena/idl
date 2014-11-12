@@ -11,12 +11,15 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="http://idl.com">Home</a>
-        <span class="right">
+        <a href="/index.html">Home</a>
+        <span><a href="/profile.php"><strong>Profile</strong></a></span>
+        <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
+        <span><a href="/people.php"><strong>People</strong></a></span>
+        <!--span class="right">
           <a href="http://idl.com/login.php">
             <strong>Back to the Login page</strong>
           </a>
-        </span>
+        </span--!>
         <div class="clr"></div>
       </div>
       <header>

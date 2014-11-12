@@ -23,6 +23,10 @@
 	 $pw = md5($password);
          $sql = mysqli_query($con, "UPDATE user SET password = '$pw' WHERE u_id = $id");
       }
+      if (!empty($_POST['url'])) {
+         $name = $_POST['url'];
+         $sql = mysqli_query($con, "UPDATE user SET drupal = '$name' WHERE u_id = $id");
+      }
       if (!empty($_POST['name'])){
          $name = $_POST['name'];
          $sql = mysqli_query($con, "UPDATE user set name = '$name' WHERE u_id = $id");

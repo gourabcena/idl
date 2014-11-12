@@ -25,11 +25,12 @@
 	  $rs = mysqli_query($con, "SELECT * FROM user WHERE username = '$username'");
           $row = mysqli_fetch_array($rs);
           $us = $row['u_id'];
-	  //after inserting in the user table the corrosponding role_id is inserted into roleuse
+	  //after inserting in the user table the corrosponding role_id is inserted into roleuser
           $sql1 = "INSERT INTO roleuser(u_id,r_id) VALUES('$us','$role')";
           mysqli_query($con, $sql1);
-	  $_SESSION['error'] = "Registraion is done!!";	
-	  header('location:login.php');
+	  $_SESSION['user'] = $username;
+	  $_SESSION['update'] = "Registration is done";	
+	  header('location:profile.php');
 	}
       }
       else {

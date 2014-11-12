@@ -40,8 +40,11 @@
 	    if ($_SESSION['role'] == 3) {
 	      $u = $_SESSION['u_id'];
 	      //show the user history like team which he belongs, no of commits etc
-	      $sql = mysqli_query($con, "select contributor.u_id,team.teamname,contributor.edit,contributor.review,contributor.commit from contributor INNER JOIN team WHERE contributor.team_id = team.team_id AND contributor.u_id = $u");
+	      $sql = mysqli_query($con, "select contributor.u_id,contributor.team_id,team.teamname,contributor.edit,contributor.review,contributor.commit from contributor INNER JOIN team WHERE contributor.team_id = team.team_id AND contributor.u_id = $u");
+	      //$row = mysqli_fetch_array($sql);
+              //$team = $row['team_id'];
 	      while ($row = mysqli_fetch_array($sql)) {
+		$_SESSION['team_id']=$row['team_id'];
                 echo "<table border='1'>";
                 echo "<tr>";
                 echo "<th>User ID</th>";
@@ -61,9 +64,37 @@
                 echo "</tr>";
 	      }
 	      echo "</table>";
-	      echo "<br><br<br>";
+	      echo"<br>";
+              $team = $_SESSION['team_id'];
+	      //this query will show the other members of the same team
+	      $sql1 = mysqli_query( $con, " select distinct user.name,contributor.edit,contributor.review,contributor.commit from contributor INNER JOIN team INNER JOIN user WHERE contributor.team_id = $team AND contributor.u_id!= $u AND contributor.u_id=user.u_id");	       
+	      echo "<br>";
 	      //verify user is belonged to some team
 	      if (mysqli_num_rows($sql)!=0) {
+		//verify other members are in the team or not
+		if (mysqli_num_rows($sql1)!=0) {
+                  echo "<p class='all'> My other team members' Performence</p>";
+                  echo "<table border='1' align='center'>
+                       <tr>
+                       <th>Name</th>
+                       <th>No of Edit</th>
+                       <th>No of review</th>
+                       <th>No of commit</th>
+                       </tr>";
+                  while ($row = mysqli_fetch_array($sql1)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "<td>" . $row['edit'] . "</td>";
+                    echo "<td>" . $row['review'] . "</td>";
+                    echo "<td>" . $row['commit'] . "</td>";
+                    echo "</tr>";
+                  }
+                  echo "</table>";
+		  echo"<br>";
+                }
+		else {
+                  echo "<p class='all'> No other members are in the team</p>";
+		}
 		echo "<p class='contact'><label for='name'>Change your edit</label></p>
                       <input id='edit' name='edit' placeholder='no' type='number' min='1' max='100'>
                       <p class='contact'><label for='email'>Change your review</label></p>

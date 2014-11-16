@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html"><strong>Home</strong></a>
+        <a href="/index.php"><strong>Home</strong></a>
         <span>
           <a href="/profile.php"><strong>My Profile</strong></a>
 	</span>
@@ -108,7 +108,7 @@
 		      <input class='buttom' name='clear' id='clear' value='clear' type='reset'>";
 	      }
 	      else {
-		echo "<p class='all'>You are not belonged to any team<p><br>";
+		echo "<p class='all'>You do not belong to any team<p><br>";
 	      }
 	    }
 	    else {

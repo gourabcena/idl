@@ -5,5 +5,5 @@
 	session_start();
 	session_destroy();
 	//unset($_session['user']);
-	header('location:login.php');
+	header('location:index.php');
 ?>

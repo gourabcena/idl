@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html"><strong>Home</strong></a>
+        <a href="/index.php"><strong>Home</strong></a>
 	<span>
 	  <a href="/profile.php">
 	    <strong>My Profile</strong>
@@ -52,12 +52,12 @@
       <div  class="form">
     	<form id="contactform" action="update.php" method="post"> 
 	  <p class="contact"><label for="name">Change your Name</label></p> 
-	  <!--Php tags in between put the values in batabase in the input field--!>
-    	  <input id="name" name="name" value="<?php echo $name;?>" type="text"> 	 
-          <p class="contact"><label for="password">change your password</label></p> 
+	  <!-- <Php tags in between put the values in batabase in the input field> -->
+    <input id="name" name="name" value="<?php echo $name;?>" type="text"> 	 
+    <p class="contact"><label for="password">change your password</label></p> 
 	  <input type="password" id="password" name="password" onchange="form.repassword.pattern=this.value";> 
-          <p class="contact"><label for="repassword">Confirm your password</label></p> 
-    	  <input type="password" id="repassword" name="repassword">
+    <p class="contact"><label for="repassword">Confirm your password</label></p> 
+    <input type="password" id="repassword" name="repassword">
 	  <p class="contact"><label for="drupal">Change your Drupal Profile link</label></p>
 	  <input type="url" id="url" name="url"value="<?php echo $drupal;?>">
 	  <p class="contact"><label for="city">current location</label></p>

@@ -10,9 +10,9 @@
     </header>
     <nav>
       <ul>
-	<li class="selected"><a href="/index.html">Home</a></li>
+	<li><a href="/index.php">Home</a></li>
 	<li><a href="/login.php">Members Area</a></li>
-	<li><a href="/teamdetails.php">Teams</a></li>
+	<li class="selected"><a href="/teamdetails.php">Teams</a></li>
 	<li><a href="/people.php">People</a></li--!>
       </ul>
     </nav>
@@ -35,11 +35,11 @@
 	    echo "<p><b>Manager:<br><a href = '$url' class = 'cool' target = 'blank'> ".$row['name']."</a><b><p><br>";
 	    $team_id = $row['team_id'];
 	    $sql1 = mysqli_query($con, "select user.name, user.drupal, contributor.edit from user INNER JOIN contributor WHERE user.u_id=contributor.u_id and contributor.team_id=$team_id"); 
-	    echo"<center><u>Team Members</u></center>";
+	    echo"<u>Team Members</u>";
 	    $i = 1;
 	    while ($row1 = mysqli_fetch_array($sql1)) {
 	      $url = $row1['drupal'];
-	      echo $i.".<a href = '$url' class = 'cool' target = 'blank'>".$row1['name']."</a><br>";
+	      echo " <a href = '$url' class = 'cool' target = 'blank'>".$row1['name']."</a><br>";
 	      $i = $i+1;
 	    }
             echo "</section></li>";

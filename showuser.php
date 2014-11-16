@@ -11,7 +11,7 @@
     </head>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html">Home</a>
+        <a href="/index.php">Home</a>
         <span>
           <a href="/profile.php">
             <strong>My Profile</strong>
@@ -73,7 +73,7 @@
                     echo"<td>Rejected</td>";
                   }
 		  if ($row['status'] == 1) {
-		    echo "<td><a href='/approval.php?u_id=$i&status=$s' class='link'>Remove</a></td>";
+		    echo "<td><a href='/approval.php?u_id=$i&status=$s' class='link'>Reject</a></td>";
 		  }
 		  if ($row['status'] == 0) {
                     echo "<td><a href='/approval.php?u_id=$i&status=$s' class='link'>Add</a></td>";

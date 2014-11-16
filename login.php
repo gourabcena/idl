@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html"><strong>Home</strong></a>
+        <a href="/index.php"><strong>Home</strong></a>
         <span><a href="/profile.php"><strong>Profile</strong></a></span>
         <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
 	<span><a href="/people.php"><strong>People</strong></a></span>
@@ -32,12 +32,12 @@
 	  }
 	  //It will show please login to continue if anyone tries to access his profile page without doing log in
           if (isset($_SESSION['message'])) {
-            echo "<div class='show'><p class='all'>".$_SESSION['message']."<p></div>";
+            echo "<p class='all'>".$_SESSION['message']."</p>";
             unset ($_SESSION['message']);
           }
 	  //Throw error message for wrong username/password
           if (isset($_SESSION['error'])) {
-            echo "<div class='show'><p class='all'>".$_SESSION['error']."<p></div>";
+            echo "<div class='show'><p class='all'>".$_SESSION['error']."</p></div>";
             unset ($_SESSION['error']);
           }
           ?>

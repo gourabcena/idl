@@ -11,7 +11,7 @@
     </head>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html"><strong>Home</strong></a>
+        <a href="/index.php"><strong>Home</strong></a>
         <span>
           <a href="/profile.php"><strong>My Profile</strong></a>
         </span>

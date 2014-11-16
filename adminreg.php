@@ -12,7 +12,7 @@
     <?php session_start(); ?>
     <div class="container">
       <div class="idl-top">
-        <a href="/index.html">Home</a>
+        <a href="/index.php">Home</a>
 	<span><a href="/profile.php"><strong>Profile</strong></a></span>
         <span><a href="/teamdetails.php"><strong>Teams</strong></a></span>
         <span><a href="/people.php"><strong>People</strong></a></span>

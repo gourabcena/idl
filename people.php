@@ -13,10 +13,10 @@
     </header>
     <nav>
       <ul>
-	<li class="selected"><a href="/index.html">Home</a></li>
+	<li><a href="/index.php">Home</a></li>
 	<li><a href="/login.php">Members Area</a></li>
 	<li><a href="/teamdetails.php">Teams</a></li>
-	<li><a href="/people.php">People</a></li--!>
+	<li class="selected"><a href="/people.php">People</a></li--!>
       </ul>
     </nav>
     <section id="intro">
